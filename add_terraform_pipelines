@@ -1,0 +1,15 @@
+#!/bin/sh
+echo "# TERRAFORM PIPELINES" >>pipelines.yml
+
+for FILE in conf.d/terraform_inputs/*.cfg; do
+    PIPELINE_ID=${FILE/conf.d\/terraform_inputs\//}
+    PIPELINE_ID=${PIPELINE_ID/.cfg/}
+    PATH_CONFIG=$(head -n 1 $FILE)
+    PATH_CONFIG=${PATH_CONFIG/\#/}
+    # echo "$FILE"
+    # echo "$PIPELINE_ID"
+    # echo "$PATH_CONFIG"
+    echo "" >>pipelines.yml
+    echo "- pipeline.id: $PIPELINE_ID" >>pipelines.yml
+    echo "  path.config:$PATH_CONFIG" >>pipelines.yml
+done
