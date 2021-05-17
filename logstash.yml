@@ -1,3 +1,4 @@
 path.data: /var/lib/logstash
 pipeline.ordered: auto
 path.logs: /var/log/logstash
+dead_letter_queue.enable: true
