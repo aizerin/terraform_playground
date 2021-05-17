@@ -1,8 +1,8 @@
 #!/bin/sh
 echo "# TERRAFORM PIPELINES" >>pipelines.yml
 
-for FILE in conf.d/terraform_inputs/*.cfg; do
-    PIPELINE_ID=${FILE/conf.d\/terraform_inputs\//}
+for FILE in conf.d/inputs_terraform/*.cfg; do
+    PIPELINE_ID=${FILE/conf.d\/inputs_terraform\//}
     PIPELINE_ID=${PIPELINE_ID/.cfg/}
     PATH_CONFIG=$(head -n 1 $FILE)
     PATH_CONFIG=${PATH_CONFIG/\#/}
